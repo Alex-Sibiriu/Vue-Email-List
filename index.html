@@ -16,16 +16,22 @@
 
 </head>
 
-<body>
-  
+<body class="bg-info-subtle ">
+
   <div id="app">
     <div class="container p-5 text-center">
-      <div class="btn btn-success" @click="getAllEmail()">Genera Mail</div>
-      <ul class="list-unstyled fw-bold mt-5">
+      <div class="btn btn-success" @click="loadingScreen(); getAllEmail()">Genera Mail</div>
+      <ul 
+        class="list-unstyled fw-bold mt-5"
+        v-if="emailArray.length === maxEmails">
         <li
-          v-for="mail in emailArray"
-          v-show="emailArray.length === 10"> {{ mail }}</li>
+          class="mb-2"
+          v-for="mail in emailArray"> {{ mail }}</li>
       </ul>
+      <h1
+        id="loading"
+        class="mt-5 d-none"
+        v-show="emailArray.length !== maxEmails">Loading...</h1>
     </div>
 
   </div>

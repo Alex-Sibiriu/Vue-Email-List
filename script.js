@@ -4,6 +4,7 @@ createApp({
   data() {
     return {
       emailArray: [],
+      maxEmails: 10,
       apiUrl: 'https://flynn.boolean.careers/exercises/api/random/mail'
     }
   },
@@ -21,10 +22,14 @@ createApp({
 
     getAllEmail() {
       this.emailArray = [];
-      
-      for (let i = 0; i < 10; i++) {
+
+      for (let i = 0; i < this.maxEmails; i++) {
         this.getAPI()
       }
+    },
+
+    loadingScreen() {
+      document.getElementById('loading').classList.remove('d-none')
     }
   },
 
